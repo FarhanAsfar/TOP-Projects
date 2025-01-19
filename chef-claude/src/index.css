@@ -24,3 +24,38 @@ header > img{
 header > h1 {
     font-weight: 400;
 }
+main{
+    padding: 10px 30px;
+}
+
+.add-ingredient-form{
+    display: flex;
+    margin: 10px;
+    justify-content: center;
+    /* align-items: center; */
+    gap: 12px;
+    height: 38px;
+}
+
+.add-ingredient-form > input{
+    border-radius: 6px;
+    border: 1px solid #D1D5DB;
+    padding: 9px 13px;
+    flex-grow: 1;
+    min-width: 150px;
+    max-width: 400px;
+    box-shadow: 0px 1px 2px 0px rga(0,0,0,00.5);
+}
+
+.add-ingredient-form > button{
+    font-family: Inter, sans-serif;
+    border-radius: 5px;
+    border: none;
+    background-color: #141413;
+    color: #FAFAF8;
+}
+
+.add-ingredient-form > button::before{
+    content: "+";
+    margin-right: 5px;
+}
