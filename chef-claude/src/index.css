@@ -25,12 +25,12 @@ header > h1 {
     font-weight: 400;
 }
 main{
-    padding: 10px 30px;
+    padding: 10px 30px 10px;
 }
 
 .add-ingredient-form{
     display: flex;
-    margin: 10px;
+    margin: 20px;
     justify-content: center;
     /* align-items: center; */
     gap: 12px;
@@ -53,6 +53,9 @@ main{
     border: none;
     background-color: #141413;
     color: #FAFAF8;
+    width: 150px;
+    font-size: 0.875rem;
+    font-weight: 500;
 }
 
 .add-ingredient-form > button::before{
