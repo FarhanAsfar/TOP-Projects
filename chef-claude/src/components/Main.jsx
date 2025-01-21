@@ -25,9 +25,18 @@ function Main(){
                 placeholder="e.g. oregano"/>
                 <button>Add Ingredient</button>
             </form>
-            <ul>
-                {ingredientList}
-            </ul>
+            
+            <section>
+                <h2>Ingredients on hand: </h2>
+                <ul className="ingredients-list" aria-live="polite">{ingredientList}</ul>
+                <div className="get-recipe-container">
+                    <div>
+                        <h3>Ready for a recipe?</h3>
+                        <p>Generate a recipe from your ingredients list.</p>
+                    </div>
+                    <button>Get a recipe</button>
+                </div>
+            </section>
         </>
     )
 
