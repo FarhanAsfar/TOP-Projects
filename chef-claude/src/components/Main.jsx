@@ -1,6 +1,7 @@
-import IngredientList from "./IngredientList";
 import React from "react";
+import IngredientList from "./IngredientList";
 import ClaudeRecipe from "./ClaudeRecipe";
+import { getRecipeFromMistral } from "../ai"
 
 function Main() {
   
@@ -14,8 +15,10 @@ function Main() {
     setIngredients((prevIngredients) => [...prevIngredients, newIngredient]);
   }
 
-  function handleRecipe() {
-    setRecipeShown((prevState) => !prevState);
+  async function handleRecipe() {
+    // setRecipeShown((prevState) => !prevState);
+    const aiRecipe = await getRecipeFromMistral(ingredients)
+    console.log(aiRecipe)
   }
 
   return (
@@ -33,8 +36,9 @@ function Main() {
 
       {ingredients.length > 0 && (
         <IngredientList 
-        handleRecipe={handleRecipe}
-        ingredients={ingredients}
+          handleRecipe={handleRecipe}
+          ingredients={ingredients}
+          
         />
       )}
 
