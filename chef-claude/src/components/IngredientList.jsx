@@ -10,7 +10,7 @@ export default function IngredientList(props) {
         <ul className="ingredients-list" aria-live="polite">
             {ingredientList}
         </ul>
-        {props.ingredients.length > 4 && (
+        {props.ingredients.length > 3 && (
             <div className="get-recipe-container">
             <div>
                 <h3>Ready for a recipe?</h3>

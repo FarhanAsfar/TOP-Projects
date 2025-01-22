@@ -5,7 +5,7 @@ import { getRecipeFromMistral } from "../ai"
 
 function Main() {
   
-  const [recipeShown, setRecipeShown] = React.useState(false);
+  const [recipe, setRecipe] = React.useState("");
   const [ingredients, setIngredients] = React.useState([]);
 
 
@@ -18,7 +18,8 @@ function Main() {
   async function handleRecipe() {
     // setRecipeShown((prevState) => !prevState);
     const aiRecipe = await getRecipeFromMistral(ingredients)
-    console.log(aiRecipe)
+    setRecipe(aiRecipe);
+    // console.log(aiRecipe)
   }
 
   return (
@@ -42,8 +43,8 @@ function Main() {
         />
       )}
 
-      {recipeShown ? (
-        <ClaudeRecipe />
+      {recipe ? (
+        <ClaudeRecipe recipe={recipe}/>
       ) : null}
     </>
   );
