@@ -14,12 +14,6 @@ function Main() {
     setIngredients((prevIngredients) => [...prevIngredients, newIngredient]);
   }
 
-  function addIngredient(formData) {
-    const newIngredient = formData.get("ingredient");
-
-    setIngredients((prevIngredients) => [...prevIngredients, newIngredient]);
-  }
-
   function handleRecipe() {
     setRecipeShown((prevState) => !prevState);
   }
