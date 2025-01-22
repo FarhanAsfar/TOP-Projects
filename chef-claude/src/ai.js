@@ -7,8 +7,6 @@ You are an assistant that receives a list of ingredients that a user has and sug
 
 const hf = new HfInference("import.meta.env.REACT_APP_HF_ACCESS_TOKEN");
 
-
-
 export async function getRecipeFromMistral(ingredientsArr) {
     const ingredientsString = ingredientsArr.join(", ");
     try {
@@ -25,3 +23,4 @@ export async function getRecipeFromMistral(ingredientsArr) {
         console.error(err.message);
     }
 }
+//git rebase
