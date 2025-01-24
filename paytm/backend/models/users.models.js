@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose, {Schema} from "mongoose";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken"
 
@@ -33,4 +33,18 @@ userSchema.pre("save", async function(){
     this.password = bcrypt.hash(this.password, 10);
 })
 
+const accountSchema = new Schema({
+    userId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+        required: true,
+    },
+    balance: {
+        type: Number,
+        required: true,
+    }
+})
+
 export const User = mongoose.model("User", userSchema);
+export const Account = mongoose.model("Account", accountSchema);
+

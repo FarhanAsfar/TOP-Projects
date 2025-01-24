@@ -1,8 +1,9 @@
 import express from "express"
-import User from "../models/users.models"
 import zod from "zod"
 import jwt from "jsonwebtoken"
-import authMiddleware from "../middleware"
+
+import {User, Account} from "../models/users.models.js"
+import authMiddleware from "../middleware.js"
 
 const router = express.Router();
 
@@ -12,7 +13,6 @@ const signupSchema = zod.object({
     firstName: zod.string(),
     lastName: zod.string(),
 })
-
 
 router.post("/signup", async(req, res) => {
     const body = req.body;
@@ -45,7 +45,7 @@ router.post("/signup", async(req, res) => {
 
 const signinBody = zod.object({
     username: zod.string().email(),
-    password: zod.string().minLength(4)
+    password: zod.string().min(4)
 })
 
 router.get("/signin", authMiddleware, async(req, res) => {
@@ -77,7 +77,6 @@ router.get("/signin", authMiddleware, async(req, res) => {
         message: "Error while logging in"
     });
 })
-
 
 const updateBody = zod.object({
     firstName: zod.string().optional(),
@@ -129,6 +128,4 @@ router.get("/bulk", async (req, res) => {
     })
 })
 
-
-
-module.exports = router;
+export default router;

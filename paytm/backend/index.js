@@ -4,9 +4,8 @@ import express from "express";
 import cors from "cors";
 
 
-import connectDB from "../backend/db/index";
-import mainRouter from "../backend/routers/index";
-
+import connectDB from "../backend/db/index.js";
+import mainRouter from "../backend/routers/index.js";
 
 const app = express();
 
