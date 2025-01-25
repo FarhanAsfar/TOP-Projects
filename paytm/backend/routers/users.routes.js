@@ -26,6 +26,7 @@ router.post("/signup", async(req, res) => {
     const user = User.findOne({
         username: body.username
     });
+    
     if(user._id){
         return res.json({
             message: "Username already exists"
@@ -33,18 +34,23 @@ router.post("/signup", async(req, res) => {
     }
 
     const dbUser = await User.create(body);
-    const token = jwt.sign({
-        userId: dbUser._id
-    }, process.env.JWT_SECRET);
+    // const token = jwt.sign({
+    //     userId: dbUser._id
+    // }, process.env.JWT_SECRET);
+
+    await Account.create({
+        user,
+        balance: 1 + Math.random()*1000,
+    })
 
     res.json({
         message: "User created successfully",
-        token: token
+        // token: token
     })
 });
 
 const signinBody = zod.object({
-    username: zod.string().email(),
+    username: zod.string(),
     password: zod.string().min(4)
 })
 
@@ -64,7 +70,7 @@ router.get("/signin", authMiddleware, async(req, res) => {
 
     if(user){
         const token = jwt.sign({
-            userId: user_.id
+            userId: user.id
         }, process.env.JWT_SECRET);
 
         res.json({
@@ -123,9 +129,50 @@ router.get("/bulk", async (req, res) => {
             username: user.username,
             firstName: user.firstName,
             lastName: user.lastName,
-            _id: user_.id
+            _id: user._id
         }))
     })
 })
+
+router.post("/transfer", authMiddleware, async(req, res) => {
+    const session = await mongoose.startSession();
+
+    session.startTransaction();
+    
+    const {amount, to} = req.body;
+
+    const account = await Account.findOne({
+        userId: req.userId
+    }).session(session);
+
+    if(!account || account.balance < amount){
+        await session.abortTransaction();
+        return res.status(400).json({
+            message: "Insufficient Balance"
+        });
+    }
+
+    const toAccount = await Account.findOne({
+        userId: to
+    }).session(session);
+
+    if(!toAccount){
+        await session.abortTransaction();
+        return res.status(400).json({
+            message: "Invalid account"
+        });
+    }
+
+    await Account.updateOne({userId: req.userId}, {$inc: {balance: -amount}}).session(session);
+
+    await Account.updateOne({userId: to}, {$inc: {balance: amount}}).session(session);
+
+
+    await session.commitTransaction();
+    
+    res.json({
+        message: "Transfer successful"
+    });
+});
 
 export default router;
