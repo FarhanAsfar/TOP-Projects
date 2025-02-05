@@ -1,6 +1,7 @@
 import express from "express"
 import zod from "zod"
 import jwt from "jsonwebtoken"
+import mongoose from "mongoose"
 
 import {User, Account} from "../models/users.models.js"
 import authMiddleware from "../middleware.js"
@@ -16,6 +17,7 @@ const signupSchema = zod.object({
 
 router.post("/signup", async(req, res) => {
     const body = req.body;
+
     const {success} = signupSchema.safeParse(req.body);
     if(!success){
         return res.json({
@@ -23,11 +25,11 @@ router.post("/signup", async(req, res) => {
         })
     }
 
-    const user = User.findOne({
+    const user = await User.findOne({
         username: body.username
     });
     
-    if(user._id){
+    if(user){
         return res.json({
             message: "Username already exists"
         });
@@ -39,7 +41,7 @@ router.post("/signup", async(req, res) => {
     // }, process.env.JWT_SECRET);
 
     await Account.create({
-        user,
+        userId: dbUser.id,
         balance: 1 + Math.random()*1000,
     })
 
