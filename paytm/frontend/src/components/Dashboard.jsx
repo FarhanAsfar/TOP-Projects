@@ -1,7 +1,19 @@
+import axios from "axios";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 
 const Dashboard = () => {
     const navigate = useNavigate();
+
+    const [users, setUsers] = useState([]);
+
+    useEffect(() => {
+        axios.get("http://localhost:3000/api/v1/user/bulk")
+        .then(response => {
+            setUsers(response.data.user);
+        })
+    }, [])
+    console.log(users)
 
     return (
         <>
@@ -29,12 +41,20 @@ const Dashboard = () => {
                     <button className="border rounded-lg  absolute end-2.5 bottom-2 text-white bg-blue-600 hover:bg-blue-800 font-medium px-4 py-2">Search</button>    
                     </div>
 
-                    <div className="border-2 mt-4 flex justify-between">
-                        <div className="m-4">Farhan Asfar</div>
-                        <div>
-                        <button className="border rounded-lg text-white bg-blue-600 hover:bg-blue-800 font-medium m-2 px-4 py-2">Send Money</button>    
+                    
+                    {users.map(user => (
+                        <div key={user._id} className=" mt-4 flex justify-between">
+                            <div className="ps-5 p-4 font-bold">
+                                {user.username}
+                            </div>
+                            <div>
+                                <button className="border rounded-lg text-white bg-blue-600 hover:bg-blue-800 font-medium m-2 px-4 py-2">Send Money</button>    
+                            </div> 
                         </div>
-                    </div>
+                    ))}
+                        
+                        
+                    
                 </div>
             </div>
         </>
