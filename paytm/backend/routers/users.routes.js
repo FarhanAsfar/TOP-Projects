@@ -36,9 +36,9 @@ router.post("/signup", async(req, res) => {
     }
 
     const dbUser = await User.create(body);
-    // const token = jwt.sign({
-    //     userId: dbUser._id
-    // }, process.env.JWT_SECRET);
+    const token = jwt.sign({
+        userId: dbUser._id
+    }, process.env.JWT_SECRET);
 
     await Account.create({
         userId: dbUser.id,
@@ -47,7 +47,7 @@ router.post("/signup", async(req, res) => {
 
     res.json({
         message: "User created successfully",
-        // token: token
+        token: token
     })
 });
 

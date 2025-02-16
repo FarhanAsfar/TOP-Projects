@@ -5,6 +5,11 @@ import Button from "./Button";
 const Signin = () => {
   const navigate = useNavigate();
 
+  const handleSignin = async (e) =>{
+    e.preventDefault();
+
+    
+  }
   return (
     <>
       <div className="flex items-center justify-center min-h-screen">
@@ -13,7 +18,7 @@ const Signin = () => {
             <h2 className="font-bold text-3xl text-blue-500">Login</h2>
           </div>
           <div className="m-4 ">
-            <form action="" className="flex flex-col">
+            <form onSubmit={handleSignin} action="" className="flex flex-col">
               <InputBox
                 label="Email"
                 type="email"

@@ -20,6 +20,8 @@ const Signup = () => {
                 lastName,
                 password,
             });
+            localStorage.setItem("token", response.data.token);
+            
             console.log("Signup Successful: ",response.data);
             navigate("/signin")
             alert("Signup successful!")

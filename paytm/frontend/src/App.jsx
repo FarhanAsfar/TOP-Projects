@@ -1,6 +1,7 @@
 import "./App.css"
 import Signin from "./components/Signin"
 import Signup from "./components/Signup"
+import Dashboard from "./components/Dashboard"
 import {BrowserRouter, Route, Routes, } from "react-router-dom"
 
 
@@ -12,6 +13,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Signup />} />
           <Route path="/signin" element={<Signin />} />
+          <Route path="/dashboard" element={<Dashboard />} />
         </Routes>
       </BrowserRouter>
     </>
