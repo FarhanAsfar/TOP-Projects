@@ -5,15 +5,37 @@ const Dashboard = () => {
 
     return (
         <>
-            <div className="bg-cyan-600 m-4">
-                <nav className="flex items-center justify-between m-2 p-2">
+            <div className="m-4 border-blue-700">
+                <nav className=" border-2 flex items-center justify-between p-2">
                     <a href="" onClick={() => navigate("/")} className="font-extrabold text-2xl">Paytm App</a>
                     
                     <div className="flex items-center gap-4 ">
                         <h2 className="">Hello</h2>
-                        <button className="border-2 rounded-lg text-xl p-1">User</button>
+                        <button className="border-2 rounded-full text-xl p-1 hover:bg-gray-50">User</button>
                     </div>
                 </nav>
+
+                <div className="mt-4 p-2 border-2">
+                    <p className="font-bold font-mono">Your current balance is: 113,345.00TK</p>
+                </div>
+
+                <div className=" mt-4">
+                    <p className="text-2xl font-bold mt-9">Users</p>
+                    <div className="relative">
+                    <input type="search" 
+                    className="block border rounded-lg p-4 w-full ps-10 border-gray-200 text-sm focus:outline-none focus:ring-blue-600 focus:border-blue-600" 
+                    placeholder="Search..."/>
+
+                    <button className="border rounded-lg  absolute end-2.5 bottom-2 text-white bg-blue-600 hover:bg-blue-800 font-medium px-4 py-2">Search</button>    
+                    </div>
+
+                    <div className="border-2 mt-4 flex justify-between">
+                        <div className="m-4">Farhan Asfar</div>
+                        <div>
+                        <button className="border rounded-lg text-white bg-blue-600 hover:bg-blue-800 font-medium m-2 px-4 py-2">Send Money</button>    
+                        </div>
+                    </div>
+                </div>
             </div>
         </>
     )

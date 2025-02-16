@@ -3,7 +3,7 @@ const Button = ({type, label}) => {
     <button
       type={type}
       className="mt-4 py-2 bg-transparent hover:bg-blue-500 text-blue-600 border-2 border-blue-500
-                    font-semibold hover:text-white hover:border-transparent rounded-full"
+                    font-semibold hover:text-white hover:border-transparent rounded-full p-2"
     >{label}</button>
   );
 };
