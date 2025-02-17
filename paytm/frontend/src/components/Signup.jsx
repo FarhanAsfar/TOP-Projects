@@ -23,7 +23,7 @@ const Signup = () => {
             localStorage.setItem("token", response.data.token);
             
             console.log("Signup Successful: ",response.data);
-            navigate("/signin")
+            navigate("/dashboard")
             alert("Signup successful!")
     } catch (error) {
         console.error("Signup failed: ", error.response?.data || error.message);
@@ -48,6 +48,7 @@ const Signup = () => {
                     onChange={(e) => {
                         setFirstName(e.target.value);
                     }}
+                    required
                 />
 
                 <InputBox
@@ -59,6 +60,7 @@ const Signup = () => {
                     onChange={(e) => {
                         setLastName(e.target.value);
                     }}
+                    required
                 />
                     
                 <InputBox
@@ -70,6 +72,7 @@ const Signup = () => {
                     onChange={(e) => {
                     setUsername(e.target.value);
                     }}
+                    required
                 />
 
                 <InputBox
@@ -81,6 +84,7 @@ const Signup = () => {
                     onChange={(e) => {
                         setPassword(e.target.value);
                     }}
+                    required
                 />
 
                 <Button type="submit" label="Submit" />

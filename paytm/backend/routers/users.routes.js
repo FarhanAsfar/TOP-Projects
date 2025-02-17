@@ -119,11 +119,16 @@ router.get("/bulk", async (req, res) => {
                 "$regex": filter
             }
         },
-    {
-        lastName: {
-            "$regex": filter
-        }
-    }]
+        {
+            lastName: {
+                "$regex": filter
+            }
+        },
+        {
+            username: {
+                "$regex": filter
+            },
+        }]
     })
 
     res.json({
