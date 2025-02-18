@@ -8,6 +8,9 @@ const Dashboard = () => {
     const [users, setUsers] = useState([]);
     const [filter, setFilter] = useState("");
 
+    const handleSendMoney = () => {
+        navigate("/send-money")
+    }
     
     useEffect(() => {
         const timeout = setTimeout(() => {
@@ -58,7 +61,7 @@ const Dashboard = () => {
                                 {user.username}
                             </div>
                             <div>
-                                <button  className="border rounded-lg text-white bg-blue-600 hover:bg-blue-800 font-medium m-2 px-4 py-2">Send Money</button>    
+                                <button onClick={handleSendMoney} className="border rounded-lg text-white bg-blue-600 hover:bg-blue-800 font-medium m-2 px-4 py-2">Send Money</button>    
                             </div> 
                         </div>
                     ))}
