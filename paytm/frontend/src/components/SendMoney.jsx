@@ -24,7 +24,7 @@ const SendMoney = () => {
                     }
                 }
             );
-            console.log("Transfer successful", response.data);
+            console.log("Money transferred successfully", response.data);
             alert("Transfer Succesful!");
         } catch (error) {
             console.error("Transfer failed", error);
