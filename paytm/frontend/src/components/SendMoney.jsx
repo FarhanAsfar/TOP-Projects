@@ -35,9 +35,9 @@ const SendMoney = () => {
 
     return (
         <>
-            <div className="flex flex-col m-20 items-center border-2">
+            <div className="flex flex-col m-20 items-center">
                 <div className="">
-                    <h1 className="font-semibold text-2xl text-black p-2">SEND MONEY TO</h1>
+                    <h1 className="font-semibold text-2xl text-black  p-2">SEND MONEY TO</h1>
                 </div>
                 <div className="flex flex-col m-2">
                     <h2 className="text-center text-2xl font-semibold">{username}</h2>
