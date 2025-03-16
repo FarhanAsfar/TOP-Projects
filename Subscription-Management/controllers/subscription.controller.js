@@ -37,7 +37,7 @@ export const getUserSubscriptions = async (req, res, next) => {
     try {
         //check if the user is the same as the token
         if(req.user.id != req.params.id){
-            const error = new Error("You are trying to see another persons account!");
+            const error = new Error("Invalid user ID!");
             error.status = 401;
             throw error;
         }
