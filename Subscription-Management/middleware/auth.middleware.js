@@ -25,7 +25,6 @@ export const authorize = async (req, res, next) => {
                 message: "Unauthorized",
             })
         }
-
         req.user = user;
         next();
     } catch (error) {
