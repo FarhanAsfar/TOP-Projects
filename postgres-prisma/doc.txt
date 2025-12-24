@@ -6,3 +6,5 @@
 4. npx prisma init 
 5. create schema
 5. run 'npx prisma migrate dev --name init'
+6. tsc --init to initialize TS. Change 'rootDir: ./src' and 'outDir: ./dist'. Create a /src folder.
+
