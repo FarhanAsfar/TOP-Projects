@@ -1,0 +1,8 @@
+1. npm init -y 
+2. npm i prisma @prisma/client
+3. create docker-compose file. As we're only using postgres image from docker, the docker-compose file is enough.
+- docker-compose up -d to run postgres container.
+
+4. npx prisma init 
+5. create schema
+5. run 'npx prisma migrate dev --name init'
