@@ -2,3 +2,6 @@
 2. run postgres in docker [ docker run -d --name 'container-name' -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=password -e POSTGRES_DB=mydb -p 5432:5432 postgres:15]
 3. create .env file, save DB_URL = 'postgresql://username:password@localhost:5432/db_name?schema=public'
 
+4. Follow the steps (till 7): https://www.prisma.io/docs/getting-started/prisma-orm/add-to-existing-project/prisma-postgres
+
+
