@@ -39,3 +39,15 @@ model Artist {
   albums    Album[]
   songs     Song[]
 }
+
+model Song {
+  id    String      @id     @default(uuid())
+  title String  
+  releaseYear   Int
+  artitstId   String
+
+  createdAt     DateTime    @default(now())
+
+  artist    Artist  @relation(fields: [artitstId], references: [id], onDelete: Cascade)
+  songs     Song[]
+}
