@@ -43,11 +43,14 @@ model Artist {
 model Song {
   id    String      @id     @default(uuid())
   title String  
-  releaseYear   Int
+  duration   Int?
   artitstId   String
+  albumId     String?
 
   createdAt     DateTime    @default(now())
 
+  album Album       @relation(fields: [albumId], references: [id], onDelete: Cascade)
   artist    Artist  @relation(fields: [artitstId], references: [id], onDelete: Cascade)
-  songs     Song[]
+
 }
+
