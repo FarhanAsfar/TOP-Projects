@@ -28,3 +28,14 @@ model Playlist {
 
   user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
+
+model Artist {
+  id      String    @id     @default(uuid())
+  name    String
+  bio     String?
+  imageUrl  String?
+  createdAt DateTime    @default(now())
+
+  albums    Album[]
+  songs     Song[]
+}
